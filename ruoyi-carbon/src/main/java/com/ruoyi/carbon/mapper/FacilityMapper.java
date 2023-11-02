@@ -4,6 +4,7 @@ import com.ruoyi.carbon.domain.Facility;
 import com.ruoyi.carbon.domain.dto.FacilityPageDto;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
@@ -20,4 +21,7 @@ public interface FacilityMapper {
     @Insert("INSERT INTO dtb_facility(id, facility_name, encoding, model, batch_date, batch_number, manufacturer, state, remark, create_time, update_time) " +
             " VALUES (#{id},#{facilityName},#{encoding},#{model},#{batchDate},#{batchNumber},#{manufacturer},#{state},#{remark},#{createTime},#{updateTime})")
     int addInfo(Facility facility);
+
+    @Select("select * from dtb_facility where id = #{id}")
+    Facility getListById(Long id);
 }

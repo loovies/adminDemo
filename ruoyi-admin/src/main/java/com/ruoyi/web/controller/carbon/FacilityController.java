@@ -41,4 +41,10 @@ public class FacilityController extends BaseController {
     public AjaxResult addList(@RequestBody Facility facility){
         return toAjax(facilityService.addinfo(facility));
     }
+
+    @GetMapping("/{id}")
+    public AjaxResult getListById(@PathVariable Long id){
+
+        return AjaxResult.success(facilityService.getListById(id));
+    }
 }

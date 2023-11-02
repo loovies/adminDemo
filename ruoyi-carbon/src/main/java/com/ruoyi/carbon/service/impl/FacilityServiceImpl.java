@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -15,6 +16,11 @@ public class FacilityServiceImpl implements FacilityService {
 
     @Autowired
     private FacilityMapper facilityMapper;
+
+    @Override
+    public Facility getListById(Long id) {
+        return facilityMapper.getListById(id);
+    }
 
     public List<Facility> getPageList(FacilityPageDto facilityPageDto) {
 
@@ -36,9 +42,19 @@ public class FacilityServiceImpl implements FacilityService {
 
     @Override
     public int addinfo(Facility facility) {
+
+        if("".equals(facility.getBatchDate())){
+            facility.setBatchDate(LocalDateTime.now().toString());
+        }
+
+        if(facility.getState() == null){
+            facility.setState(1);
+        }
         facility.setCreateTime(LocalDateTime.now());
         facility.setUpdateTime(LocalDateTime.now());
-        facility.setId(System.currentTimeMillis());
+        String id = Long.toString(System.currentTimeMillis());
+        id = "1"+id.substring(1,5);
+        facility.setId(Long.parseLong(id));
 
         return facilityMapper.addInfo(facility);
     }

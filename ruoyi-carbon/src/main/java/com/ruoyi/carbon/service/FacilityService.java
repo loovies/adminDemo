@@ -6,6 +6,8 @@ import com.ruoyi.carbon.domain.dto.FacilityPageDto;
 import java.util.List;
 
 public interface FacilityService {
+     Facility getListById(Long id);
+
     List<Facility> getPageList(FacilityPageDto facilityPageDto);
 
     int delInfoById(Long id);
