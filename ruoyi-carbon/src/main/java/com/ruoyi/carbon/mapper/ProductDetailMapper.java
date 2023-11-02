@@ -10,5 +10,7 @@ import java.util.List;
 @Mapper
 public interface ProductDetailMapper {
 
+//   List<ProductModelingDetail> getProductList(ProductDetailPageDto pageDto);
+
    List<ProductDetailVo> getProductList(ProductDetailPageDto pageDto);
 }

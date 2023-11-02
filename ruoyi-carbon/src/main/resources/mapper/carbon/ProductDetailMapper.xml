@@ -5,6 +5,8 @@
 
     <resultMap id="ProductDetailMap" type="ProductModelingDetail">
         <id column="id" property="id"/>
+        <result column="mid" property="mid"/>
+        <result column="pid" property="pid"/>
         <result column="remark" property="remark"/>
         <result column="create_time" property="createTime"/>
         <result column="update_time" property="updateTime"/>
@@ -39,10 +41,19 @@
         <result column="is_deleteId" property="isDeleteId"/>
     </resultMap>
 
-    <select id="getProductList" resultMap="ProductDetailVo">
+    <resultMap id="ProductDetailVoId" type="ProductDetailVo">
+        <id column="pid" property="pid"/>
+        <result column="model_name" property="modelName"/>
+        <result column="product" property="product"/>
+        <result column="model" property="model"/>
+        <result column="specification" property="specification"/>
+        <result column="product_unit" property="productUnit"/>
+    </resultMap>
+
+    <select id="getProductList" parameterType="ProductDetailPageDto" resultMap="ProductDetailVoId">
         select pm.pid , pm.model_name , pm.product , m.model , m.specification,pm.product_unit
         from dtb_product_modeling_detail pdd
-        INNER Join dtb_product_modeling pm ON pdd.pid = pm.pid
+        INNER JOIN dtb_product_modeling pm ON pdd.pid = pm.pid
         INNER JOIN dtb_material m ON pdd.mid = m.mid
         <where>
             <if test="modelName != null and modelName != ''">
@@ -51,4 +62,17 @@
         </where>
         order by pdd.update_time desc
     </select>
+
+<!--    <select id="getProductList" parameterType="ProductDetailPageDto" resultMap="ProductDetailMap">-->
+<!--        select pm.pid , pm.model_name , pm.product , m.model , m.specification,pm.product_unit-->
+<!--        from dtb_product_modeling_detail pdd-->
+<!--        INNER JOIN dtb_product_modeling pm ON pdd.pid = pm.pid-->
+<!--        INNER JOIN dtb_material m ON pdd.mid = m.mid-->
+<!--        <where>-->
+<!--            <if test="modelName != null and modelName != ''">-->
+<!--                and pm.model_name like concat('%',#{modelName},'%')-->
+<!--            </if>-->
+<!--        </where>-->
+<!--        order by pdd.update_time desc   -->
+<!--    </select>-->
 </mapper>

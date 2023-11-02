@@ -8,5 +8,7 @@ import java.util.List;
 
 public interface ProductDetailService {
 
+//    public List<ProductModelingDetail> getProductList(ProductDetailPageDto pageDto);
+
     public List<ProductDetailVo> getProductList(ProductDetailPageDto pageDto);
 }

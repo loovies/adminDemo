@@ -7,6 +7,9 @@ public class ProductModelingDetail implements Serializable {
 
     private Long id;
 
+    private Long pid;
+
+    private Long mid;
     private Material material;
 
     private ProductModeling productModeling;
@@ -23,6 +26,8 @@ public class ProductModelingDetail implements Serializable {
     public String toString() {
         return "ProductModelingDetail{" +
                 "id=" + id +
+                ", pid=" + pid +
+                ", mid=" + mid +
                 ", material=" + material +
                 ", productModeling=" + productModeling +
                 ", remark='" + remark + '\'' +
@@ -30,6 +35,22 @@ public class ProductModelingDetail implements Serializable {
                 ", updateTime=" + updateTime +
                 ", isDeleteId=" + isDeleteId +
                 '}';
+    }
+
+    public Long getPid() {
+        return pid;
+    }
+
+    public void setPid(Long pid) {
+        this.pid = pid;
+    }
+
+    public Long getMid() {
+        return mid;
+    }
+
+    public void setMid(Long mid) {
+        this.mid = mid;
     }
 
     public Long getId() {

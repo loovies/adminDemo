@@ -2,6 +2,7 @@ package com.ruoyi.carbon.domain.vo;
 
 import java.io.Serializable;
 
+
 public class ProductDetailVo implements Serializable {
 
     private Integer pid;

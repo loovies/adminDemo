@@ -15,6 +15,10 @@ public class ProductDetailServiceImpl implements ProductDetailService {
 
     @Autowired
     private ProductDetailMapper productDetailMapper;
+//    @Override
+//    public List<ProductModelingDetail> getProductList(ProductDetailPageDto pageDto) {
+//        return productDetailMapper.getProductList(pageDto);
+//    }
     @Override
     public List<ProductDetailVo> getProductList(ProductDetailPageDto pageDto) {
         return productDetailMapper.getProductList(pageDto);
