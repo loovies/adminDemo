@@ -17,6 +17,8 @@ public class ProductDetailVo implements Serializable {
 
     private String productUnit;
 
+    private String remark;
+
     @Override
     public String toString() {
         return "ProductDetailVo{" +
@@ -26,7 +28,16 @@ public class ProductDetailVo implements Serializable {
                 ", model='" + model + '\'' +
                 ", specification='" + specification + '\'' +
                 ", productUnit='" + productUnit + '\'' +
+                ", remark='" + remark + '\'' +
                 '}';
+    }
+
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
     }
 
     public Integer getPid() {

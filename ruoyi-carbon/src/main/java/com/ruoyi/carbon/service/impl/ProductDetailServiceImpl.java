@@ -23,4 +23,16 @@ public class ProductDetailServiceImpl implements ProductDetailService {
     public List<ProductDetailVo> getProductList(ProductDetailPageDto pageDto) {
         return productDetailMapper.getProductList(pageDto);
     }
+
+    @Override
+    public int delPInfo(Long id) {
+        int pd = productDetailMapper.delPdetailInfo(id);
+        int p = productDetailMapper.delPInfo(id);
+        return pd+p > 1 ? 1 : 0;
+    }
+
+    @Override
+    public ProductDetailVo getMaterialByPid(Long id) {
+        return productDetailMapper.getMaterialByPid(id);
+    }
 }

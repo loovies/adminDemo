@@ -5,11 +5,11 @@ import com.ruoyi.carbon.domain.dto.ProductDetailPageDto;
 import com.ruoyi.carbon.domain.vo.ProductDetailVo;
 import com.ruoyi.carbon.service.ProductDetailService;
 import com.ruoyi.common.core.controller.BaseController;
+import com.ruoyi.common.core.domain.AjaxResult;
 import com.ruoyi.common.core.page.TableDataInfo;
+import org.apache.poi.ss.formula.functions.T;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -24,8 +24,16 @@ public class ProductDetailController extends BaseController {
     public TableDataInfo getProductList(ProductDetailPageDto pageDto){
         startPage();
         List<ProductDetailVo> productList = productDetailService.getProductList(pageDto);
-        System.out.println("++");
-        System.out.println(productList);
         return getDataTable(productList);
+    }
+
+    @DeleteMapping("/{id}")
+    public AjaxResult DelProductionInfo(@PathVariable Long id){
+        return toAjax(productDetailService.delPInfo(id));
+    }
+
+    @GetMapping("/{id}")
+    public AjaxResult getMaterialByPid(@PathVariable Long id){
+        return AjaxResult.success(productDetailService.getMaterialByPid(id));
     }
 }

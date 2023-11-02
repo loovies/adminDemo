@@ -11,4 +11,8 @@ public interface ProductDetailService {
 //    public List<ProductModelingDetail> getProductList(ProductDetailPageDto pageDto);
 
     public List<ProductDetailVo> getProductList(ProductDetailPageDto pageDto);
+
+    int delPInfo(Long id);
+
+    ProductDetailVo getMaterialByPid(Long id);
 }
