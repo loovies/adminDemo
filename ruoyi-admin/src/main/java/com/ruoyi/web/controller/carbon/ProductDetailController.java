@@ -2,6 +2,7 @@ package com.ruoyi.web.controller.carbon;
 
 import com.ruoyi.carbon.domain.ProductModelingDetail;
 import com.ruoyi.carbon.domain.dto.ProductDetailPageDto;
+import com.ruoyi.carbon.domain.vo.ProductDetailVo;
 import com.ruoyi.carbon.service.ProductDetailService;
 import com.ruoyi.common.core.controller.BaseController;
 import com.ruoyi.common.core.page.TableDataInfo;
@@ -22,7 +23,7 @@ public class ProductDetailController extends BaseController {
     @GetMapping("/list")
     public TableDataInfo getProductList(ProductDetailPageDto pageDto){
         startPage();
-        List<ProductModelingDetail> productList = productDetailService.getProductList(pageDto);
+        List<ProductDetailVo> productList = productDetailService.getProductList(pageDto);
         System.out.println("++");
         System.out.println(productList);
         return getDataTable(productList);

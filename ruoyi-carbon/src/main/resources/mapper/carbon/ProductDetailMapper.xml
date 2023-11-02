@@ -39,7 +39,7 @@
         <result column="is_deleteId" property="isDeleteId"/>
     </resultMap>
 
-    <select id="getProductList">
+    <select id="getProductList" resultMap="ProductDetailVo">
         select pm.pid , pm.model_name , pm.product , m.model , m.specification,pm.product_unit
         from dtb_product_modeling_detail pdd
         INNER Join dtb_product_modeling pm ON pdd.pid = pm.pid
