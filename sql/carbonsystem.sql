@@ -11,7 +11,7 @@
  Target Server Version : 50717
  File Encoding         : 65001
 
- Date: 01/11/2023 16:37:58
+ Date: 03/11/2023 09:03:07
 */
 
 SET NAMES utf8mb4;
@@ -178,7 +178,7 @@ INSERT INTO `dtb_facility` VALUES (10005, '设备 F', 'F01', 'Model U', '2022-06
 INSERT INTO `dtb_facility` VALUES (10006, '设备 G', 'G01', 'Model T', '2022-07-01 00:00:00', 'BATCH007', '制造商 G', 0, 'Remark 7', '2022-07-01 00:00:00', '2022-07-02 00:00:00', 0);
 INSERT INTO `dtb_facility` VALUES (10007, '设备 H', 'H01', 'Model S', '2022-08-01 00:00:00', 'BATCH008', '制造商 H', 0, 'Remark 8', '2022-08-01 00:00:00', '2022-08-02 00:00:00', 0);
 INSERT INTO `dtb_facility` VALUES (10008, '设备 I', 'I01', 'Model R', '2022-09-01 00:00:00', 'BATCH009', '制造商 I', 0, 'Remark 9', '2022-09-01 00:00:00', '2022-09-02 00:00:00', 0);
-INSERT INTO `dtb_facility` VALUES (10009, '设备 J', 'J01', 'Model Q', '2022-10-01 00:00:00', 'BATCH010', '制造商 J', 0, 'Remark 10', '2022-10-01 00:00:00', '2022-10-02 00:00:00', 0);
+INSERT INTO `dtb_facility` VALUES (10009, '设备 J', 'J01', 'Model Q', '2022-10-01 00:00:00', 'BATCH010', '制造商 J', 0, 'Remark 10', '2022-10-01 00:00:00', '2022-10-02 00:00:00', 1);
 INSERT INTO `dtb_facility` VALUES (10010, '设备 K', 'K01', 'Model P', '2022-11-01 00:00:00', 'BATCH011', '制造商 K', 1, 'Remark 11', '2022-11-01 00:00:00', '2022-11-02 00:00:00', 0);
 INSERT INTO `dtb_facility` VALUES (1698822016841, '向连格后经', 'magnt', 'in', '1977-03-17 00:00:00', '39', 'commodo culpa veniam', 1, 'incididunt tempor quis', '2023-11-01 15:00:17', '2023-11-01 15:02:52', 1);
 
@@ -187,7 +187,7 @@ INSERT INTO `dtb_facility` VALUES (1698822016841, '向连格后经', 'magnt', 'i
 -- ----------------------------
 DROP TABLE IF EXISTS `dtb_material`;
 CREATE TABLE `dtb_material`  (
-  `id` bigint(20) NOT NULL COMMENT '编号',
+  `mid` bigint(20) NOT NULL COMMENT '编号',
   `material_number` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '物料编码',
   `material_name` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '物料名称',
   `model` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT ' 型号',
@@ -195,27 +195,52 @@ CREATE TABLE `dtb_material`  (
   `unit` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '单位',
   `unit_price` decimal(10, 0) NULL DEFAULT NULL COMMENT '单价',
   `type` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '类型 ',
+  `mcategory_id` bigint(20) NULL DEFAULT NULL COMMENT '分类编码',
   `remark` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '备注',
   `create_time` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
   `update_time` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
   `is_deleteId` int(11) NULL DEFAULT NULL COMMENT ' 是否删除  0 未删除(默认), 1 已删除',
-  PRIMARY KEY (`id`) USING BTREE
+  PRIMARY KEY (`mid`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '物料档案表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of dtb_material
 -- ----------------------------
-INSERT INTO `dtb_material` VALUES (10000, '1001', '物料 A', '型号 A', '规格 A', 'Unit A', 10, 'Type A', 'Remark A', '2022-01-01 00:00:00', '2022-01-02 00:00:00', 0);
-INSERT INTO `dtb_material` VALUES (10001, '1002', '物料 B', '型号 B', '规格 B', 'Unit B', 20, 'Type B', 'Remark B', '2022-02-01 00:00:00', '2022-02-02 00:00:00', 0);
-INSERT INTO `dtb_material` VALUES (10002, '1003', '物料 C', '型号 C', '规格 C', 'Unit C', 30, 'Type C', 'Remark C', '2022-03-01 00:00:00', '2022-03-02 00:00:00', 0);
-INSERT INTO `dtb_material` VALUES (10003, '1004', '物料 D', '型号 D', '规格 D', 'Unit D', 40, 'Type D', 'Remark D', '2022-04-01 00:00:00', '2022-04-02 00:00:00', 0);
-INSERT INTO `dtb_material` VALUES (10004, '1005', '物料 E', '型号 E', '规格 E', 'Unit E', 50, 'Type E', 'Remark E', '2022-05-01 00:00:00', '2022-05-02 00:00:00', 0);
-INSERT INTO `dtb_material` VALUES (10005, '1006', '物料 F', '型号 F', '规格 F', 'Unit F', 60, 'Type F', 'Remark F', '2022-06-01 00:00:00', '2022-06-02 00:00:00', 0);
-INSERT INTO `dtb_material` VALUES (10006, '1007', '物料 G', '型号 G', '规格 G', 'Unit G', 70, 'Type G', 'Remark G', '2022-07-01 00:00:00', '2022-07-02 00:00:00', 0);
-INSERT INTO `dtb_material` VALUES (10007, '1008', '物料 H', '型号 H', '规格 H', 'Unit H', 80, 'Type H', 'Remark H', '2022-08-01 00:00:00', '2022-08-02 00:00:00', 0);
-INSERT INTO `dtb_material` VALUES (10008, '1009', '物料 I', '型号 I', '规格 I', 'Unit I', 90, 'Type I', 'Remark I', '2022-09-01 00:00:00', '2022-09-02 00:00:00', 0);
-INSERT INTO `dtb_material` VALUES (10009, '1010', '物料 J', '型号 J', '规格 J', 'Unit J', 100, 'Type J', 'Remark J', '2022-10-01 00:00:00', '2022-10-02 00:00:00', 0);
-INSERT INTO `dtb_material` VALUES (10010, '1011', '物料 K', '型号 K', '规格 K', 'Unit K', 110, 'Type K', 'Remark K', '2022-11-01 00:00:00', '2022-11-02 00:00:00', 0);
+INSERT INTO `dtb_material` VALUES (1001, '1001', '物料 A', '型号 A', '规格 A', 'Unit A', 10, 'Type A', 5555, 'Remark A', '2022-01-01 00:00:00', '2022-01-02 00:00:00', 0);
+INSERT INTO `dtb_material` VALUES (1002, '1002', '物料 B', '型号 B', '规格 B', 'Unit B', 20, 'Type B', 5555, 'Remark B', '2022-02-01 00:00:00', '2022-02-02 00:00:00', 0);
+INSERT INTO `dtb_material` VALUES (1003, '1003', '物料 C', '型号 C', '规格 C', 'Unit C', 30, 'Type C', 4000, 'Remark C', '2022-03-01 00:00:00', '2022-03-02 00:00:00', 0);
+INSERT INTO `dtb_material` VALUES (1004, '1004', '物料 D', '型号 D', '规格 D', 'Unit D', 40, 'Type D', 4000, 'Remark D', '2022-04-01 00:00:00', '2022-04-02 00:00:00', 0);
+INSERT INTO `dtb_material` VALUES (1005, '1005', '物料 E', '型号 E', '规格 E', 'Unit E', 50, 'Type E', 4000, 'Remark E', '2022-05-01 00:00:00', '2022-05-02 00:00:00', 0);
+INSERT INTO `dtb_material` VALUES (1006, '1006', '物料 F', '型号 F', '规格 F', 'Unit F', 60, 'Type F', 4000, 'Remark F', '2022-06-01 00:00:00', '2022-06-02 00:00:00', 0);
+INSERT INTO `dtb_material` VALUES (1007, '1007', '物料 G', '型号 G', '规格 G', 'Unit G', 70, 'Type G', 4000, 'Remark G', '2022-07-01 00:00:00', '2022-07-02 00:00:00', 0);
+INSERT INTO `dtb_material` VALUES (1008, '1008', '物料 H', '型号 H', '规格 H', 'Unit H', 80, 'Type H', 3000, 'Remark H', '2022-08-01 00:00:00', '2022-08-02 00:00:00', 0);
+INSERT INTO `dtb_material` VALUES (1009, '1009', '物料 I', '型号 I', '规格 I', 'Unit I', 90, 'Type I', 4000, 'Remark I', '2022-09-01 00:00:00', '2022-09-02 00:00:00', 0);
+INSERT INTO `dtb_material` VALUES (1010, '1010', '物料 J', '型号 J', '规格 J', 'Unit J', 100, 'Type J', 6666, 'Remark J', '2022-10-01 00:00:00', '2022-10-02 00:00:00', 0);
+INSERT INTO `dtb_material` VALUES (1011, '1011', '物料 K', '型号 K', '规格 K', 'Unit K', 110, 'Type K', 4000, 'Remark K', '2022-11-01 00:00:00', '2022-11-02 00:00:00', 0);
+
+-- ----------------------------
+-- Table structure for dtb_material_category
+-- ----------------------------
+DROP TABLE IF EXISTS `dtb_material_category`;
+CREATE TABLE `dtb_material_category`  (
+  `mcategory_id` bigint(20) NOT NULL COMMENT '分类编码',
+  `mcategory_Name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '分类名称',
+  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL COMMENT '说明',
+  `parent_create_id` bigint(20) NULL DEFAULT NULL COMMENT '父级分类id',
+  `create_time` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
+  `update_time` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
+  `is_deleteId` int(11) NULL DEFAULT NULL COMMENT '是否删除\n\n0 未删除(默认), 1 已删除\n',
+  PRIMARY KEY (`mcategory_id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of dtb_material_category
+-- ----------------------------
+INSERT INTO `dtb_material_category` VALUES (2323, '塑料', 'wew', 3000, '2023-11-02 09:25:22', '2023-11-03 09:25:28', 0);
+INSERT INTO `dtb_material_category` VALUES (3000, '零件', ',.,.,.', 0, '2023-11-02 09:23:32', '2023-11-02 09:23:39', 0);
+INSERT INTO `dtb_material_category` VALUES (4000, '零食', '.....', 0, '2023-11-02 09:23:07', '2023-11-02 09:23:10', 0);
+INSERT INTO `dtb_material_category` VALUES (5555, '薯片', '微软微软', 4000, '2023-11-09 09:24:03', '2023-11-02 09:24:10', 0);
+INSERT INTO `dtb_material_category` VALUES (6666, '辣条', '很辣', 4000, '2023-11-02 09:24:48', '2023-11-02 09:24:44', 0);
 
 -- ----------------------------
 -- Table structure for dtb_preserve
@@ -252,34 +277,31 @@ INSERT INTO `dtb_preserve` VALUES (10010, '云熙工业有限责任公司', '莫
 -- ----------------------------
 DROP TABLE IF EXISTS `dtb_product_modeling`;
 CREATE TABLE `dtb_product_modeling`  (
-  `id` bigint(20) NOT NULL COMMENT '编号',
+  `pid` bigint(20) NOT NULL COMMENT '编号',
   `product` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '产品',
-  `product_modeling` bigint(20) NULL DEFAULT NULL COMMENT '产品型号 | 不可编辑 ',
-  `product_standard` bigint(20) NULL DEFAULT NULL COMMENT ' 产品规格 | 不可编辑',
   `model_name` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '模型名称',
   `product_unit` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '产品单位',
   `remark` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '备注',
-  `material_number` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '物料编码 外键',
   `create_time` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
   `update_time` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
   `is_deleteId` int(11) NULL DEFAULT NULL COMMENT ' 是否删除  0 未删除(默认), 1 已删除',
-  PRIMARY KEY (`id`) USING BTREE
+  PRIMARY KEY (`pid`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '产品建模' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of dtb_product_modeling
 -- ----------------------------
-INSERT INTO `dtb_product_modeling` VALUES (10000, 'Product A', 1001, 2001, 'Model A', 'Unit A', 'Remark A', 'MATERIAL001', '2022-01-01 00:00:00', '2022-01-02 00:00:00', 0);
-INSERT INTO `dtb_product_modeling` VALUES (10001, 'Product B', 1002, 2002, 'Model B', 'Unit B', 'Remark B', 'MATERIAL002', '2022-02-01 00:00:00', '2022-02-02 00:00:00', 0);
-INSERT INTO `dtb_product_modeling` VALUES (10002, 'Product C', 1003, 2003, 'Model C', 'Unit C', 'Remark C', 'MATERIAL003', '2022-03-01 00:00:00', '2022-03-02 00:00:00', 0);
-INSERT INTO `dtb_product_modeling` VALUES (10003, 'Product D', 1004, 2004, 'Model D', 'Unit D', 'Remark D', 'MATERIAL004', '2022-04-01 00:00:00', '2022-04-02 00:00:00', 0);
-INSERT INTO `dtb_product_modeling` VALUES (10004, 'Product E', 1005, 2005, 'Model E', 'Unit E', 'Remark E', 'MATERIAL005', '2022-05-01 00:00:00', '2022-05-02 00:00:00', 0);
-INSERT INTO `dtb_product_modeling` VALUES (10005, 'Product F', 1006, 2006, 'Model F', 'Unit F', 'Remark F', 'MATERIAL006', '2022-06-01 00:00:00', '2022-06-02 00:00:00', 0);
-INSERT INTO `dtb_product_modeling` VALUES (10006, 'Product G', 1007, 2007, 'Model G', 'Unit G', 'Remark G', 'MATERIAL007', '2022-07-01 00:00:00', '2022-07-02 00:00:00', 0);
-INSERT INTO `dtb_product_modeling` VALUES (10007, 'Product H', 1008, 2008, 'Model H', 'Unit H', 'Remark H', 'MATERIAL008', '2022-08-01 00:00:00', '2022-08-02 00:00:00', 0);
-INSERT INTO `dtb_product_modeling` VALUES (10008, 'Product I', 1009, 2009, 'Model I', 'Unit I', 'Remark I', 'MATERIAL009', '2022-09-01 00:00:00', '2022-09-02 00:00:00', 0);
-INSERT INTO `dtb_product_modeling` VALUES (10009, 'Product J', 1010, 2010, 'Model J', 'Unit J', 'Remark J', 'MATERIAL010', '2022-10-01 00:00:00', '2022-10-02 00:00:00', 0);
-INSERT INTO `dtb_product_modeling` VALUES (10010, 'Product K', 1011, 2011, 'Model K', 'Unit K', 'Remark K', 'MATERIAL011', '2022-11-01 00:00:00', '2022-11-02 00:00:00', 0);
+INSERT INTO `dtb_product_modeling` VALUES (10000, 'Product A', 'Model A', 'Unit A', 'Remark A', '2022-01-01 00:00:00', '2022-01-02 00:00:00', 0);
+INSERT INTO `dtb_product_modeling` VALUES (10001, 'Product B', 'Model B', 'Unit B', 'Remark B', '2022-02-01 00:00:00', '2023-11-02 10:34:27', 0);
+INSERT INTO `dtb_product_modeling` VALUES (10002, 'Product C', 'Model C', 'Unit C', 'Remark C', '2022-03-01 00:00:00', '2022-03-02 00:00:00', 0);
+INSERT INTO `dtb_product_modeling` VALUES (10003, 'Product D', 'Model D', 'Unit D', 'Remark D', '2022-04-01 00:00:00', '2022-04-02 00:00:00', 0);
+INSERT INTO `dtb_product_modeling` VALUES (10004, 'Product E', 'Model E', 'Unit E', 'Remark E', '2022-05-01 00:00:00', '2022-05-02 00:00:00', 0);
+INSERT INTO `dtb_product_modeling` VALUES (10005, 'Product F', 'Model F', 'Unit F', 'Remark F', '2022-06-01 00:00:00', '2022-06-02 00:00:00', 1);
+INSERT INTO `dtb_product_modeling` VALUES (10006, 'Product G', 'Model G', 'Unit G', 'Remark G', '2022-07-01 00:00:00', '2022-07-02 00:00:00', 1);
+INSERT INTO `dtb_product_modeling` VALUES (10007, 'Product H', 'Model H', 'Unit H', 'Remark H', '2022-08-01 00:00:00', '2022-08-02 00:00:00', 0);
+INSERT INTO `dtb_product_modeling` VALUES (10008, 'Product I', 'Model I', 'Unit I', 'Remark I', '2022-09-01 00:00:00', '2022-09-02 00:00:00', 0);
+INSERT INTO `dtb_product_modeling` VALUES (10009, 'Product J', 'Model J', 'Unit J', 'Remark J', '2022-10-01 00:00:00', '2022-10-02 00:00:00', 0);
+INSERT INTO `dtb_product_modeling` VALUES (10010, 'Product K', 'Model K', 'Unit K', 'Remark K', '2022-11-01 00:00:00', '2022-11-02 00:00:00', 0);
 
 -- ----------------------------
 -- Table structure for dtb_product_modeling_detail
@@ -303,8 +325,8 @@ INSERT INTO `dtb_product_modeling_detail` VALUES (10001, 1001, 10000, 'Remark 1'
 INSERT INTO `dtb_product_modeling_detail` VALUES (10002, 1002, 10001, 'Remark 2', '2022-02-01 00:00:00', '2022-02-02 00:00:00', 0);
 INSERT INTO `dtb_product_modeling_detail` VALUES (10003, 1003, 10003, 'Remark 3', '2022-03-01 00:00:00', '2022-03-02 00:00:00', 0);
 INSERT INTO `dtb_product_modeling_detail` VALUES (10004, 1004, 10004, 'Remark 4', '2022-04-01 00:00:00', '2022-04-02 00:00:00', 0);
-INSERT INTO `dtb_product_modeling_detail` VALUES (10005, 1005, 10005, 'Remark 5', '2022-05-01 00:00:00', '2022-05-02 00:00:00', 0);
-INSERT INTO `dtb_product_modeling_detail` VALUES (10006, 1006, 10006, 'Remark 6', '2022-06-01 00:00:00', '2022-06-02 00:00:00', 0);
+INSERT INTO `dtb_product_modeling_detail` VALUES (10005, 1005, 10005, 'Remark 5', '2022-05-01 00:00:00', '2022-05-02 00:00:00', 1);
+INSERT INTO `dtb_product_modeling_detail` VALUES (10006, 1006, 10006, 'Remark 6', '2022-06-01 00:00:00', '2022-06-02 00:00:00', 1);
 INSERT INTO `dtb_product_modeling_detail` VALUES (10007, 1007, 10007, 'Remark 7', '2022-07-01 00:00:00', '2022-07-02 00:00:00', 0);
 INSERT INTO `dtb_product_modeling_detail` VALUES (10008, 1008, 10008, 'Remark 8', '2022-08-01 00:00:00', '2022-08-02 00:00:00', 0);
 INSERT INTO `dtb_product_modeling_detail` VALUES (10009, 1009, 10009, 'Remark 9', '2022-09-01 00:00:00', '2022-09-02 00:00:00', 0);
@@ -784,7 +806,7 @@ CREATE TABLE `sys_logininfor`  (
   PRIMARY KEY (`info_id`) USING BTREE,
   INDEX `idx_sys_logininfor_s`(`status`) USING BTREE,
   INDEX `idx_sys_logininfor_lt`(`login_time`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 13 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '系统访问记录' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 18 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '系统访问记录' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sys_logininfor
@@ -801,6 +823,11 @@ INSERT INTO `sys_logininfor` VALUES (9, 'admin', '127.0.0.1', '内网IP', 'Chrom
 INSERT INTO `sys_logininfor` VALUES (10, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-10-31 21:56:17');
 INSERT INTO `sys_logininfor` VALUES (11, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '1', '验证码错误', '2023-11-01 14:39:21');
 INSERT INTO `sys_logininfor` VALUES (12, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-11-01 14:39:24');
+INSERT INTO `sys_logininfor` VALUES (13, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-11-02 11:38:49');
+INSERT INTO `sys_logininfor` VALUES (14, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-11-02 12:56:12');
+INSERT INTO `sys_logininfor` VALUES (15, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-11-02 14:28:19');
+INSERT INTO `sys_logininfor` VALUES (16, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-11-02 19:39:45');
+INSERT INTO `sys_logininfor` VALUES (17, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-11-02 21:28:48');
 
 -- ----------------------------
 -- Table structure for sys_menu
@@ -1175,7 +1202,7 @@ CREATE TABLE `sys_user`  (
 -- ----------------------------
 -- Records of sys_user
 -- ----------------------------
-INSERT INTO `sys_user` VALUES (1, 103, 'admin', '若依', '00', 'ry@163.com', '15888888888', '1', '', '$2a$10$7JB720yubVSZvUI0rEqK/.VqGOZTH.ulu33dHOiBE8ByOhJIrdAu2', '0', '0', '127.0.0.1', '2023-11-01 14:39:25', 'admin', '2023-10-30 19:40:31', '', '2023-11-01 14:39:24', '管理员');
+INSERT INTO `sys_user` VALUES (1, 103, 'admin', '若依', '00', 'ry@163.com', '15888888888', '1', '', '$2a$10$7JB720yubVSZvUI0rEqK/.VqGOZTH.ulu33dHOiBE8ByOhJIrdAu2', '0', '0', '127.0.0.1', '2023-11-02 21:28:48', 'admin', '2023-10-30 19:40:31', '', '2023-11-02 21:28:47', '管理员');
 INSERT INTO `sys_user` VALUES (2, 105, 'ry', '若依', '00', 'ry@qq.com', '15666666666', '1', '', '$2a$10$7JB720yubVSZvUI0rEqK/.VqGOZTH.ulu33dHOiBE8ByOhJIrdAu2', '0', '0', '127.0.0.1', '2023-10-30 19:40:31', 'admin', '2023-10-30 19:40:31', '', NULL, '测试员');
 
 -- ----------------------------
