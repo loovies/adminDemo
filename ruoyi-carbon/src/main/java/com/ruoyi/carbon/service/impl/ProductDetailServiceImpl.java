@@ -2,6 +2,7 @@ package com.ruoyi.carbon.service.impl;
 
 import com.ruoyi.carbon.domain.ProductModelingDetail;
 import com.ruoyi.carbon.domain.dto.ProductDetailPageDto;
+import com.ruoyi.carbon.domain.dto.ProductMDto;
 import com.ruoyi.carbon.domain.vo.ProductDetailVo;
 import com.ruoyi.carbon.mapper.ProductDetailMapper;
 import com.ruoyi.carbon.service.ProductDetailService;
@@ -34,5 +35,12 @@ public class ProductDetailServiceImpl implements ProductDetailService {
     @Override
     public ProductDetailVo getMaterialByPid(Long id) {
         return productDetailMapper.getMaterialByPid(id);
+    }
+
+    @Override
+    public int updateInfo(ProductMDto productMDto) {
+        int p = productDetailMapper.updateproduct(productMDto);
+        int m = productDetailMapper.updateM(productMDto);
+        return p+m > 1 ? 1: 0;
     }
 }

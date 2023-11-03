@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ruoyi.carbon.mapper.MaterialMapper">
+
+        <resultMap id="MaterialVoId" type="MaterialVo">
+            <id column="mid" property="mid"/>
+            <result column="material_number" property="materialNumber"/>
+            <result column="material_name" property="materialName"/>
+            <result column="model" property="model"/>
+            <result column="specification" property="specification"/>
+            <result column="unit" property="unit"/>
+            <result column="unit_price" property="unitPrice"/>
+            <result column="remark" property="remark"/>
+            <result column="mcategory_Name" property="mcategoryName"/>
+        </resultMap>
+
+        <resultMap id="MaterialCategoryMap" type="MaterialCategory">
+            <id property="mcategoryId" column="mcategory_id"/>
+            <result property="mcategoryName" column="mcategory_Name"/>
+            <result property="parentCreateId" column="parent_create_id"/>
+            <result property="description" column="description"/>
+            <result property="createTime" column="create_time"/>
+        </resultMap>
+    
+        <resultMap id="MaterialCategoyMap" type="MaterialCategory" extends="MaterialCategoryMap">
+            <collection property="children" ofType="MaterialCategory" select="getCategoryInfo" column="mcategory_id">
+            </collection>
+        </resultMap>
+    
+        <select id="getAll" resultMap="MaterialVoId">
+            select m.mid , m.mcategory_id , m.material_number , m.material_name ,m.model ,m.specification,m.unit,m.unit_price,m.remark,dmc.mcategory_Name
+            FROM dtb_material m
+            INNER JOIN dtb_material_category dmc ON m.mcategory_id = dmc.mcategory_id
+            <where>
+                m.is_deleteId = 0
+                <if test="sid != null and sid != ''">
+                    and dmc.parent_create_id = #{sid}
+                </if>
+                <if test="sid != null and sid != ''">
+                    or dmc.mcategory_id = #{sid}
+                </if>
+                <if test="mid != null and mid != ''">
+                    and m.mid = #{mid}
+                </if>
+            </where>
+        </select>
+
+    <select id="getCategoryInfo" resultMap="MaterialCategoyMap">
+            select mcategory_id, mcategory_Name, description, parent_create_id, create_time, update_time, is_deleteId
+            from dtb_material_category
+            where parent_create_id = #{id}
+    </select>
+</mapper>

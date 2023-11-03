@@ -2,6 +2,7 @@ package com.ruoyi.carbon.domain;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.List;
 
 public class MaterialCategory implements Serializable {
     private Long mcategoryId;
@@ -12,6 +13,7 @@ public class MaterialCategory implements Serializable {
 
     private Long parentCreateId;
 
+    private List<MaterialCategory> children;
     private LocalDateTime createTime;
 
     private LocalDateTime updateTime;
@@ -25,10 +27,19 @@ public class MaterialCategory implements Serializable {
                 ", mcategoryName='" + mcategoryName + '\'' +
                 ", description='" + description + '\'' +
                 ", parentCreateId=" + parentCreateId +
+                ", children=" + children +
                 ", createTime=" + createTime +
                 ", updateTime=" + updateTime +
                 ", isDeleteId=" + isDeleteId +
                 '}';
+    }
+
+    public List<MaterialCategory> getChildren() {
+        return children;
+    }
+
+    public void setChildren(List<MaterialCategory> children) {
+        this.children = children;
     }
 
     public Long getMcategoryId() {

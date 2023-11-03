@@ -2,12 +2,14 @@ package com.ruoyi.web.controller.carbon;
 
 import com.ruoyi.carbon.domain.ProductModelingDetail;
 import com.ruoyi.carbon.domain.dto.ProductDetailPageDto;
+import com.ruoyi.carbon.domain.dto.ProductMDto;
 import com.ruoyi.carbon.domain.vo.ProductDetailVo;
 import com.ruoyi.carbon.service.ProductDetailService;
 import com.ruoyi.common.core.controller.BaseController;
 import com.ruoyi.common.core.domain.AjaxResult;
 import com.ruoyi.common.core.page.TableDataInfo;
 import org.apache.poi.ss.formula.functions.T;
+import org.aspectj.weaver.loadtime.Aj;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -35,5 +37,11 @@ public class ProductDetailController extends BaseController {
     @GetMapping("/{id}")
     public AjaxResult getMaterialByPid(@PathVariable Long id){
         return AjaxResult.success(productDetailService.getMaterialByPid(id));
+    }
+
+    @PutMapping
+    public AjaxResult updateProductionInfo(@RequestBody ProductMDto productMDto){
+        System.out.println(productMDto);
+        return toAjax(productDetailService.updateInfo(productMDto));
     }
 }

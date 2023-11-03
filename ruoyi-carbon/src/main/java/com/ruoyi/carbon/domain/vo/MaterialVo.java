@@ -1,9 +1,8 @@
-package com.ruoyi.carbon.domain;
+package com.ruoyi.carbon.domain.vo;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
 
-public class Material implements Serializable {
+public class MaterialVo implements Serializable {
 
     private Long mid;
 
@@ -19,23 +18,14 @@ public class Material implements Serializable {
 
     private double unitPrice;
 
-    private String type;
-
-    private Long mcategoryId;
-
     private String remark;
 
-    private LocalDateTime createTime;
-
-    private LocalDateTime updateTime;
-
-    private Integer isDeleteId;
 
     private String mcategoryName;
 
     @Override
     public String toString() {
-        return "Material{" +
+        return "MaterialVo{" +
                 "mid=" + mid +
                 ", materialNumber='" + materialNumber + '\'' +
                 ", materialName='" + materialName + '\'' +
@@ -43,22 +33,9 @@ public class Material implements Serializable {
                 ", specification='" + specification + '\'' +
                 ", unit='" + unit + '\'' +
                 ", unitPrice=" + unitPrice +
-                ", type='" + type + '\'' +
-                ", mcategoryId=" + mcategoryId +
                 ", remark='" + remark + '\'' +
-                ", createTime=" + createTime +
-                ", updateTime=" + updateTime +
-                ", isDeleteId=" + isDeleteId +
                 ", mcategoryName='" + mcategoryName + '\'' +
                 '}';
-    }
-
-    public String getMcategoryName() {
-        return mcategoryName;
-    }
-
-    public void setMcategoryName(String mcategoryName) {
-        this.mcategoryName = mcategoryName;
     }
 
     public Long getMid() {
@@ -117,22 +94,6 @@ public class Material implements Serializable {
         this.unitPrice = unitPrice;
     }
 
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public Long getMcategoryId() {
-        return mcategoryId;
-    }
-
-    public void setMcategoryId(Long mcategoryId) {
-        this.mcategoryId = mcategoryId;
-    }
-
     public String getRemark() {
         return remark;
     }
@@ -141,27 +102,11 @@ public class Material implements Serializable {
         this.remark = remark;
     }
 
-    public LocalDateTime getCreateTime() {
-        return createTime;
+    public String getMcategoryName() {
+        return mcategoryName;
     }
 
-    public void setCreateTime(LocalDateTime createTime) {
-        this.createTime = createTime;
-    }
-
-    public LocalDateTime getUpdateTime() {
-        return updateTime;
-    }
-
-    public void setUpdateTime(LocalDateTime updateTime) {
-        this.updateTime = updateTime;
-    }
-
-    public Integer getIsDeleteId() {
-        return isDeleteId;
-    }
-
-    public void setIsDeleteId(Integer isDeleteId) {
-        this.isDeleteId = isDeleteId;
+    public void setMcategoryName(String mcategoryName) {
+        this.mcategoryName = mcategoryName;
     }
 }
