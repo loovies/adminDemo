@@ -3,6 +3,7 @@ package com.ruoyi.carbon.service.impl;
 import com.ruoyi.carbon.domain.BOMData;
 import com.ruoyi.carbon.domain.BOMDetailData;
 import com.ruoyi.carbon.domain.vo.BOMDataVo;
+import com.ruoyi.carbon.domain.vo.ProductModelVo;
 import com.ruoyi.carbon.mapper.BOMDataMapper;
 import com.ruoyi.carbon.service.BOMDataService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,8 +25,13 @@ public class BOMDataServiceImpl implements BOMDataService {
     public BOMData getBOMDataById(Long id) {
 
         BOMData bm = bomDataMapper.getBOMDataById(id);
-        BOMDetailData bdd = bomDataMapper.getBOMDataDetailById(id);
+        List<BOMDetailData> bdd = bomDataMapper.getBOMDataDetailById(id);
+        bm.setDetailData(bdd);
+        return bm;
+    }
 
-        return null;
+    @Override
+    public List<ProductModelVo> getProductModel() {
+        return bomDataMapper.getProductModel();
     }
 }

@@ -2,6 +2,7 @@ package com.ruoyi.web.controller.carbon;
 
 import com.ruoyi.carbon.domain.BOMData;
 import com.ruoyi.carbon.domain.vo.BOMDataVo;
+import com.ruoyi.carbon.domain.vo.ProductModelVo;
 import com.ruoyi.carbon.service.BOMDataService;
 import com.ruoyi.common.core.controller.BaseController;
 import com.ruoyi.common.core.domain.AjaxResult;
@@ -33,5 +34,11 @@ public class BOMDataController extends BaseController {
 
         BOMData n = bomDataService.getBOMDataById(id);
         return AjaxResult.success(n);
+    }
+
+    @GetMapping("/bomModel")
+    public TableDataInfo getBomModel(){
+        List<ProductModelVo> list = bomDataService.getProductModel();
+        return getDataTable(list);
     }
 }

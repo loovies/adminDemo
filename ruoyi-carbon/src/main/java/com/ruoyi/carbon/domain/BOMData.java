@@ -16,9 +16,11 @@ public class BOMData implements Serializable {
 
     private String model;
 
+    private String modelName;
+
     private String productType;
 
-    private String unit;
+    private String BOMUnit;
 
     private String remark;
 
@@ -38,8 +40,9 @@ public class BOMData implements Serializable {
                 ", bname='" + bname + '\'' +
                 ", product='" + product + '\'' +
                 ", model='" + model + '\'' +
+                ", modelName='" + modelName + '\'' +
                 ", productType='" + productType + '\'' +
-                ", unit='" + unit + '\'' +
+                ", BOMUnit='" + BOMUnit + '\'' +
                 ", remark='" + remark + '\'' +
                 ", createTime=" + createTime +
                 ", updateTime=" + updateTime +
@@ -104,12 +107,12 @@ public class BOMData implements Serializable {
         this.productType = productType;
     }
 
-    public String getUnit() {
-        return unit;
+    public String getBOMUnit() {
+        return BOMUnit;
     }
 
-    public void setUnit(String unit) {
-        this.unit = unit;
+    public void setBOMUnit(String BOMUnit) {
+        this.BOMUnit = BOMUnit;
     }
 
     public String getRemark() {
@@ -142,5 +145,13 @@ public class BOMData implements Serializable {
 
     public void setIsDeleteId(int isDeleteId) {
         this.isDeleteId = isDeleteId;
+    }
+
+    public String getModelName() {
+        return modelName;
+    }
+
+    public void setModelName(String modelName) {
+        this.modelName = modelName;
     }
 }
