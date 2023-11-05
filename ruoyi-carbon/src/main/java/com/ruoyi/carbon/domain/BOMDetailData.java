@@ -21,8 +21,10 @@ public class BOMDetailData implements Serializable {
 
     private int isDeleteId;
 
+    private Material material;
+
     @Override
-    public String  toString() {
+    public String toString() {
         return "BOMDetailData{" +
                 "id=" + id +
                 ", mid=" + mid +
@@ -32,6 +34,7 @@ public class BOMDetailData implements Serializable {
                 ", createTime=" + createTime +
                 ", updateTime=" + updateTime +
                 ", isDeleteId=" + isDeleteId +
+                ", material=" + material +
                 '}';
     }
 
@@ -97,5 +100,13 @@ public class BOMDetailData implements Serializable {
 
     public void setIsDeleteId(int isDeleteId) {
         this.isDeleteId = isDeleteId;
+    }
+
+    public Material getMaterial() {
+        return material;
+    }
+
+    public void setMaterial(Material material) {
+        this.material = material;
     }
 }

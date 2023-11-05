@@ -2,6 +2,7 @@ package com.ruoyi.carbon.mapper;
 
 import com.ruoyi.carbon.domain.BOMData;
 import com.ruoyi.carbon.domain.BOMDetailData;
+import com.ruoyi.carbon.domain.Material;
 import com.ruoyi.carbon.domain.dto.BOMupdateDataDto;
 import com.ruoyi.carbon.domain.vo.BOMDataVo;
 import com.ruoyi.carbon.domain.vo.ProductModelVo;
@@ -43,4 +44,7 @@ public interface BOMDataMapper {
     @Insert("INSERT INTO dtb_bom_data(bid, bname, mid, remark, create_time, update_time, is_deleteId, model, BOM_unit) " +
             " VALUES (#{bid},#{bname},#{mid},#{remark},#{createTime},#{updateTime},#{isDeleteId},#{model},#{BOMUnit})")
     int addBOM(BOMData bomDetailData);
+
+    @Select("Select * FROM dtb_material where mid = #{mid}")
+    Material getMaterialList(Long mid);
 }

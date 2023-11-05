@@ -2,6 +2,7 @@ package com.ruoyi.carbon.service.impl;
 
 import com.ruoyi.carbon.domain.BOMData;
 import com.ruoyi.carbon.domain.BOMDetailData;
+import com.ruoyi.carbon.domain.Material;
 import com.ruoyi.carbon.domain.dto.BOMupdateDataDto;
 import com.ruoyi.carbon.domain.dto.BomDataDto;
 import com.ruoyi.carbon.domain.vo.BOMDataVo;
@@ -30,7 +31,15 @@ public class BOMDataServiceImpl implements BOMDataService {
     public BOMData getBOMDataById(Long id) {
 
         BOMData bm = bomDataMapper.getBOMDataById(id);
+        System.out.println("++++");
+        System.out.println(bm);
         List<BOMDetailData> bdd = bomDataMapper.getBOMDataDetailById(id);
+        for (BOMDetailData bomDetailData : bdd) {
+            Material m = bomDataMapper.getMaterialList(bomDetailData.getMid());
+            if(m != null){
+                bomDetailData.setMaterial(m);
+            }
+        }
         bm.setDetailData(bdd);
         return bm;
     }
