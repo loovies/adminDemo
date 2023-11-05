@@ -1,6 +1,7 @@
 package com.ruoyi.web.controller.carbon;
 
 import com.ruoyi.carbon.domain.ProductModelingDetail;
+import com.ruoyi.carbon.domain.dto.ProductAddDto;
 import com.ruoyi.carbon.domain.dto.ProductDetailPageDto;
 import com.ruoyi.carbon.domain.dto.ProductMDto;
 import com.ruoyi.carbon.domain.vo.ProductDetailVo;
@@ -43,5 +44,11 @@ public class ProductDetailController extends BaseController {
     public AjaxResult updateProductionInfo(@RequestBody ProductMDto productMDto){
         System.out.println(productMDto);
         return toAjax(productDetailService.updateInfo(productMDto));
+    }
+
+    @PostMapping
+    public AjaxResult addProductionInfo(@RequestBody  ProductAddDto productAddDto){
+        int n = productDetailService.addProuctInfo(productAddDto);
+        return toAjax(n);
     }
 }

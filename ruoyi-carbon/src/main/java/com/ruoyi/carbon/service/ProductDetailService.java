@@ -1,6 +1,7 @@
 package com.ruoyi.carbon.service;
 
 import com.ruoyi.carbon.domain.ProductModelingDetail;
+import com.ruoyi.carbon.domain.dto.ProductAddDto;
 import com.ruoyi.carbon.domain.dto.ProductDetailPageDto;
 import com.ruoyi.carbon.domain.dto.ProductMDto;
 import com.ruoyi.carbon.domain.vo.ProductDetailVo;
@@ -18,4 +19,6 @@ public interface ProductDetailService {
     ProductDetailVo getMaterialByPid(Long id);
 
     int updateInfo(ProductMDto productMDto);
+
+    int addProuctInfo(ProductAddDto productAddDto);
 }

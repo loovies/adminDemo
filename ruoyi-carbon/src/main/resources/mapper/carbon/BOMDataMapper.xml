@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ruoyi.carbon.mapper.BOMDataMapper">
+
+    <resultMap id="BOMDataBOId" type="BOMDataVo">
+        <id column="bid" property="bid" />
+        <result column="bname" property="bname"/>
+        <result column="product" property="product"/>
+        <result column="model" property="model"/>
+        <result column="specification"/>
+        <result column="unit" property="unit"/>
+    </resultMap>
+
+    <select id="getBOMData" resultMap="BOMDataBOId">
+        select dbd.bid,dbd.bname,dbd.product,dm.model,dm.specification,dm.unit
+        FROM dtb_bom_data dbd
+        INNER JOIN dtb_material dm ON dm.mid = dbd.mid
+        <where>
+            dbd.is_deleteId = 0
+            <if test="bname != null and bname != ''">
+                and bname Like concat('%',#{bname},'%')
+            </if>
+        </where>
+    </select>
+</mapper>

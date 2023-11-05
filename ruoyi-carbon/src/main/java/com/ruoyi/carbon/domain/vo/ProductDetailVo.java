@@ -5,6 +5,7 @@ import java.io.Serializable;
 
 public class ProductDetailVo implements Serializable {
 
+    private Long mid;
     private Integer pid;
 
     private String modelName;
@@ -22,7 +23,8 @@ public class ProductDetailVo implements Serializable {
     @Override
     public String toString() {
         return "ProductDetailVo{" +
-                "pid=" + pid +
+                "mid=" + mid +
+                ", pid=" + pid +
                 ", modelName='" + modelName + '\'' +
                 ", product='" + product + '\'' +
                 ", model='" + model + '\'' +
@@ -30,6 +32,14 @@ public class ProductDetailVo implements Serializable {
                 ", productUnit='" + productUnit + '\'' +
                 ", remark='" + remark + '\'' +
                 '}';
+    }
+
+    public Long getMid() {
+        return mid;
+    }
+
+    public void setMid(Long mid) {
+        this.mid = mid;
     }
 
     public String getRemark() {

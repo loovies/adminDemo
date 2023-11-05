@@ -42,7 +42,8 @@
 <!--    </resultMap>-->
 
     <resultMap id="ProductDetailVoId" type="ProductDetailVo">
-        <id column="pid" property="pid"/>
+        <result column="mid" property="mid"/>
+        <result column="pid" property="pid"/>
         <result column="model_name" property="modelName"/>
         <result column="product" property="product"/>
         <result column="model" property="model"/>
@@ -52,12 +53,12 @@
     </resultMap>
 
     <select id="getProductList" parameterType="ProductDetailPageDto" resultMap="ProductDetailVoId">
-        select pm.pid , pm.model_name , pm.product , m.model , m.specification,pm.product_unit , pdd.remark
+        select m.mid, pm.pid , pm.model_name , pm.product , m.model , m.specification,pm.product_unit , pm.remark
         from dtb_product_modeling_detail pdd
         INNER JOIN dtb_product_modeling pm ON pdd.pid = pm.pid
         INNER JOIN dtb_material m ON pdd.mid = m.mid
         <where>
-            pm.is_deleteId = 0
+            pdd.is_deleteId = 0
             <if test="modelName != null and modelName != ''">
                 and pm.model_name like concat('%',#{modelName},'%')
             </if>
@@ -66,7 +67,7 @@
     </select>
 
     <select id="getMaterialByPid" parameterType="long" resultType="ProductDetailVo">
-        select pm.pid , pm.model_name , pm.product , m.model , m.specification,pm.product_unit , pdd.remark
+        select pdd.mid, pm.pid , pm.model_name , pm.product , m.model , m.specification,pm.product_unit , pm.remark
         from dtb_product_modeling_detail pdd
         INNER JOIN dtb_product_modeling pm ON pdd.pid = pm.pid
         INNER JOIN dtb_material m ON pdd.mid = m.mid
