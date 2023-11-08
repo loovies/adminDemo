@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.decarbonization.mapper.MesProductBomMapper">
+    
+    <resultMap type="MesProductBom" id="MesProductBomResult">
+        <result property="id"    column="id" />
+        <result property="name"    column="name" />
+        <result property="productId"    column="product_id"    />
+        <result property="description"    column="description"    />
+        <result property="createBy"    column="create_by"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateBy"    column="update_by"    />
+        <result property="updateTime"    column="update_time"    />
+        <result property="productCode" column="code"/>
+        <result property="productName" column="mName"/>
+        <result property="productModel" column="model"/>
+        <result property="productSpecification" column="specification"/>
+        <result property="productUnit" column="unit"/>
+    </resultMap>
+
+    <sql id="selectMesProductBomVo">
+        select mpb.id, mpb.name, mpb.product_id, mpb.description, mpb.create_by, mpb.create_time,
+               mpb.update_by, mpb.update_time, mpbd.id, mpbd.bom_id, mpbd.material_id, mpbd.`usage`,
+               mpbd.remark, wmi.id, wmi.category_id, wmi.code, wmi.name mName, wmi.model, wmi.specification,
+               wmi.unit, wmi.price, wmi.type, wmi.remark, wmi.create_by, wmi.create_time, wmi.update_by,
+               wmi.update_time from mes_product_bom mpb
+        JOIN mes_product_bom_detail mpbd ON mpbd.bom_id = mpb.id
+        JOIN wms_material_info wmi ON wmi.id = mpbd.material_id
+    </sql>
+
+    <select id="selectMesProductBomList" parameterType="MesProductBom" resultMap="MesProductBomResult">
+       <include refid="selectMesProductBomVo"/>
+        <where>  
+            <if test="name != null  and name != ''"> and mpb.name like concat('%', #{name}, '%')</if>
+            <if test="productId != null "> and mpb.product_id = #{productId}</if>
+            <if test="description != null  and description != ''"> and mpb.description = #{description}</if>
+        </where>
+    </select>
+    
+    <select id="selectMesProductBomById" parameterType="Long" resultMap="MesProductBomResult">
+        <include refid="selectMesProductBomVo"/>
+        where mpb.id = #{id}
+    </select>
+        
+    <insert id="insertMesProductBom" parameterType="MesProductBom" useGeneratedKeys="true" keyProperty="id">
+        insert into mes_product_bom
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="name != null">name,</if>
+            <if test="productId != null">product_id,</if>
+            <if test="description != null">description,</if>
+            <if test="createBy != null">create_by,</if>
+            <if test="createTime != null">create_time,</if>
+            <if test="updateBy != null">update_by,</if>
+            <if test="updateTime != null">update_time,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="name != null">#{name},</if>
+            <if test="productId != null">#{productId},</if>
+            <if test="description != null">#{description},</if>
+            <if test="createBy != null">#{createBy},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="updateBy != null">#{updateBy},</if>
+            <if test="updateTime != null">#{updateTime},</if>
+         </trim>
+    </insert>
+
+    <update id="updateMesProductBom" parameterType="MesProductBom">
+        update mes_product_bom
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="name != null">name = #{name},</if>
+            <if test="productId != null">product_id = #{productId},</if>
+            <if test="description != null">description = #{description},</if>
+            <if test="createBy != null">create_by = #{createBy},</if>
+            <if test="createTime != null">create_time = #{createTime},</if>
+            <if test="updateBy != null">update_by = #{updateBy},</if>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteMesProductBomById" parameterType="Long">
+        delete from mes_product_bom where id = #{id}
+    </delete>
+
+    <delete id="deleteMesProductBomByIds" parameterType="String">
+        delete from mes_product_bom where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>
