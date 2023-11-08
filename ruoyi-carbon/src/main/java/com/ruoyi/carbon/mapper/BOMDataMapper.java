@@ -7,6 +7,7 @@ import com.ruoyi.carbon.domain.dto.BOMupdateDataDto;
 import com.ruoyi.carbon.domain.vo.BOMDataVo;
 import com.ruoyi.carbon.domain.vo.ProductModelVo;
 import com.ruoyi.carbon.domain.vo.ProductTypeVo;
+import com.ruoyi.carbon.domain.vo.UpdateMidVo;
 import org.apache.ibatis.annotations.*;
 import org.springframework.web.bind.annotation.PutMapping;
 
@@ -29,8 +30,8 @@ public interface BOMDataMapper {
     @Update("update dtb_bom_data set bname = #{bname},model = #{model},remark = #{remark} WHERE bid = #{bid}")
     int updateBOM(BOMupdateDataDto boMupdateDataDto);
 
-    @Update("update dtb_bom_detail_data set mid = #{mid} where bid = #{bid}")
-    int updateBomByMid(@Param("bid") Long bid, @Param("mid") Long mid);
+    @Update("update dtb_bom_detail_data set mid = #{mid} where bid = #{bid} and id = #{id}")
+    int updateBomByMid(UpdateMidVo updateMidVo);
 
 
     @Insert("insert into dtb_bom_detail_data(id, mid, bid, dosage, remark, create_time, update_time, is_deleteId) " +

@@ -35,10 +35,7 @@
             <where>
                 m.is_deleteId = 0
                 <if test="sid != null and sid != ''">
-                    and dmc.parent_create_id = #{sid}
-                </if>
-                <if test="sid != null and sid != ''">
-                    or dmc.mcategory_id = #{sid}
+                    and dmc.parent_create_id = #{sid} or dmc.mcategory_id = #{sid}
                 </if>
                 <if test="mid != null and mid != ''">
                     and m.mid = #{mid}

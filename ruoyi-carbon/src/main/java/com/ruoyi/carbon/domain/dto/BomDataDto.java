@@ -4,8 +4,6 @@ public class BomDataDto {
 
     private Long pid;
 
-    private Long mid;
-
     private String bname;
 
     private String remark;
@@ -14,7 +12,6 @@ public class BomDataDto {
     public String toString() {
         return "BomDataDto{" +
                 "pid=" + pid +
-                ", mid=" + mid +
                 ", bname='" + bname + '\'' +
                 ", remark='" + remark + '\'' +
                 '}';
@@ -28,13 +25,6 @@ public class BomDataDto {
         this.pid = pid;
     }
 
-    public Long getMid() {
-        return mid;
-    }
-
-    public void setMid(Long mid) {
-        this.mid = mid;
-    }
 
     public String getBname() {
         return bname;

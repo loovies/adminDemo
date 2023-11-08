@@ -27,7 +27,7 @@ public class MaterialController extends BaseController {
         return getDataTable(materialList);
     }
 
-     @GetMapping("/category")
+    @GetMapping("/category")
     public TableDataInfo getCategoryInfo(){
         List<MaterialCategory> list= materialService.getCategoryInfo();
         return getDataTable(list);

@@ -8,6 +8,7 @@ import com.ruoyi.carbon.domain.dto.BomDataDto;
 import com.ruoyi.carbon.domain.vo.BOMDataVo;
 import com.ruoyi.carbon.domain.vo.ProductModelVo;
 import com.ruoyi.carbon.domain.vo.ProductTypeVo;
+import com.ruoyi.carbon.domain.vo.UpdateMidVo;
 import com.ruoyi.carbon.mapper.BOMDataMapper;
 import com.ruoyi.carbon.service.BOMDataService;
 import org.springframework.beans.BeanUtils;
@@ -55,8 +56,8 @@ public class BOMDataServiceImpl implements BOMDataService {
     }
 
     @Override
-    public int updateBOMById(Long bid, Long mid) {
-        return bomDataMapper.updateBomByMid(bid,mid);
+    public int updateBOMById(UpdateMidVo updateMidVo) {
+        return bomDataMapper.updateBomByMid(updateMidVo);
     }
 
     @Override
@@ -89,7 +90,7 @@ public class BOMDataServiceImpl implements BOMDataService {
 
         bomDetailData.setBid(Long.parseLong(Long.toString(System.currentTimeMillis()).substring(5,11)));
         bomDetailData.setModel(bomDataDto.getPid().toString());
-        bomDetailData.setMid(bomDataDto.getMid());
+        bomDetailData.setMid(1001L);
         bomDetailData.setBname(bomDataDto.getBname());
         bomDetailData.setRemark(bomDataDto.getRemark());
 

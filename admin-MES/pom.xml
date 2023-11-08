@@ -7,10 +7,10 @@
         <version>3.8.6</version>
     </parent>
 
-    <artifactId>ruoyi-carbon</artifactId>
+    <artifactId>admin-MES</artifactId>
     <packaging>jar</packaging>
 
-    <name>ruoyi-carbon</name>
+    <name>admin-MES</name>
     <url>http://maven.apache.org</url>
 
     <properties>
@@ -27,12 +27,6 @@
         <dependency>
             <groupId>com.ruoyi</groupId>
             <artifactId>ruoyi-common</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>io.swagger</groupId>
-            <artifactId>swagger-annotations</artifactId>
-            <version>1.6.2</version>
-            <scope>compile</scope>
         </dependency>
     </dependencies>
 </project>

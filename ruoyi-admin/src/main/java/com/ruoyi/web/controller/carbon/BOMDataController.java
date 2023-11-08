@@ -6,6 +6,7 @@ import com.ruoyi.carbon.domain.dto.BomDataDto;
 import com.ruoyi.carbon.domain.vo.BOMDataVo;
 import com.ruoyi.carbon.domain.vo.ProductModelVo;
 import com.ruoyi.carbon.domain.vo.ProductTypeVo;
+import com.ruoyi.carbon.domain.vo.UpdateMidVo;
 import com.ruoyi.carbon.service.BOMDataService;
 import com.ruoyi.common.core.controller.BaseController;
 import com.ruoyi.common.core.domain.AjaxResult;
@@ -43,19 +44,24 @@ public class BOMDataController extends BaseController {
     }
 
     @PutMapping("/updatebom")
-    public AjaxResult updateBom( BOMupdateDataDto boMupdateDataDto){
+    public AjaxResult updateBom(@RequestBody BOMupdateDataDto boMupdateDataDto){
         int n = bomDataService.updateBOM(boMupdateDataDto);
         return toAjax(n);
     }
 
     @PutMapping("/updatebomdId")
-    public AjaxResult updateBOMById(Long mid,Long bid){
-        int n = bomDataService.updateBOMById(bid,mid);
+    public AjaxResult updateBOMById(@RequestBody UpdateMidVo updateMidVo){
+        System.out.println("+++++++++++++");
+        System.out.println("+++++++++++++");
+        System.out.println("+++++++++++++");
+        System.out.println("+++++++++++++");
+        System.out.println(updateMidVo);
+        int n = bomDataService.updateBOMById(updateMidVo);
         return toAjax(n);
     }
 
     @PostMapping("/addbomdetail")
-    public AjaxResult addBOMDetail(Long bid, Long mid ){
+    public AjaxResult addBOMDetail(Long bid,Long mid ){
         int n = bomDataService.addBOMData(bid,mid);
         return toAjax(n);
     }
@@ -66,7 +72,7 @@ public class BOMDataController extends BaseController {
         return getDataTable(list);
     }
     @PostMapping("/addbom")
-    public AjaxResult addBOM(BomDataDto bomDataDto){
+    public AjaxResult addBOM(@RequestBody BomDataDto bomDataDto){
         int n = bomDataService.addBOM(bomDataDto);
         return toAjax(n);
     }

@@ -6,6 +6,7 @@ import com.ruoyi.carbon.domain.dto.BomDataDto;
 import com.ruoyi.carbon.domain.vo.BOMDataVo;
 import com.ruoyi.carbon.domain.vo.ProductModelVo;
 import com.ruoyi.carbon.domain.vo.ProductTypeVo;
+import com.ruoyi.carbon.domain.vo.UpdateMidVo;
 
 import java.util.List;
 
@@ -18,7 +19,7 @@ public interface BOMDataService {
 
     int updateBOM(BOMupdateDataDto boMupdateDataDto);
 
-    int updateBOMById(Long bid, Long mid);
+    int updateBOMById(UpdateMidVo updateMidVo);
 
     int addBOMData(Long bid, Long mid);
 

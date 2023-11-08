@@ -181,6 +181,7 @@
         <module>ruoyi-generator</module>
         <module>ruoyi-common</module>
         <module>ruoyi-carbon</module>
+        <module>admin-MES</module>
     </modules>
     <packaging>pom</packaging>
 
