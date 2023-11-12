@@ -2,6 +2,7 @@ package com.ruoyi.decarbonization.mapper;
 
 import java.util.List;
 import com.ruoyi.decarbonization.domain.MesProductBomDetail;
+import org.apache.ibatis.annotations.Mapper;
 
 /**
  * BOM单明细Mapper接口
@@ -9,7 +10,8 @@ import com.ruoyi.decarbonization.domain.MesProductBomDetail;
  * @author ruoyi
  * @date 2023-11-08
  */
-public interface MesProductBomDetailMapper 
+@Mapper
+public interface MesProductBomDetailMapper
 {
     /**
      * 查询BOM单明细

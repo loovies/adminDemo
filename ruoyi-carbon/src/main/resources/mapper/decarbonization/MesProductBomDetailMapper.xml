@@ -10,11 +10,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <result property="materialId"    column="material_id"/>
         <result property="usage"    column="usage"/>
         <result property="remark"    column="remark"/>
-        <result property="productSpecification" column="specification"/>
-        <result property="productModel" column="model"/>
-        <result property="productCode" column="code"/>
-        <result property="productName" column="name"/>
-        <result property="productUnit" column="unit"/>
+        <result property="materialSpecification" column="specification"/>
+        <result property="materialModel" column="model"/>
+        <result property="materialCode" column="code"/>
+        <result property="materialName" column="name"/>
+        <result property="materialUnit" column="unit"/>
     </resultMap>
 
     <sql id="selectMesProductBomDetailVo">
@@ -35,7 +35,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     
     <select id="selectMesProductBomDetailById" parameterType="Long" resultMap="MesProductBomDetailResult">
         <include refid="selectMesProductBomDetailVo"/>
-        where mpbd.id = #{id}
+        where mpbd.bom_id = #{id}
     </select>
         
     <insert id="insertMesProductBomDetail" parameterType="MesProductBomDetail" useGeneratedKeys="true" keyProperty="id">

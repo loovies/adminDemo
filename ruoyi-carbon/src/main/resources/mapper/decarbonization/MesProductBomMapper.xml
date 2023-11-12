@@ -13,21 +13,26 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <result property="createTime"    column="create_time"    />
         <result property="updateBy"    column="update_by"    />
         <result property="updateTime"    column="update_time"    />
+        <result property="materialId" column="material_id"/>
         <result property="productCode" column="code"/>
         <result property="productName" column="mName"/>
         <result property="productModel" column="model"/>
         <result property="productSpecification" column="specification"/>
         <result property="productUnit" column="unit"/>
+        <result property="rid" column="rid" />
+        <result property="modelName" column="model_name"/>
     </resultMap>
 
     <sql id="selectMesProductBomVo">
         select mpb.id, mpb.name, mpb.product_id, mpb.description, mpb.create_by, mpb.create_time,
-               mpb.update_by, mpb.update_time, mpbd.id, mpbd.bom_id, mpbd.material_id, mpbd.`usage`,
-               mpbd.remark, wmi.id, wmi.category_id, wmi.code, wmi.name mName, wmi.model, wmi.specification,
+               mpb.update_by, mpb.update_time, wmi.id, wmi.category_id, wmi.code,
+               wmi.name mName, wmi.model, wmi.specification,
                wmi.unit, wmi.price, wmi.type, wmi.remark, wmi.create_by, wmi.create_time, wmi.update_by,
-               wmi.update_time from mes_product_bom mpb
-        JOIN mes_product_bom_detail mpbd ON mpbd.bom_id = mpb.id
-        JOIN wms_material_info wmi ON wmi.id = mpbd.material_id
+               wmi.update_time, mpm.model_name
+        from mes_product_bom mpb
+        JOIN mes_product_model mpm ON mpm.id = mpb.product_id
+        JOIN wms_material_info wmi ON wmi.id = mpm.material_id
+
     </sql>
 
     <select id="selectMesProductBomList" parameterType="MesProductBom" resultMap="MesProductBomResult">

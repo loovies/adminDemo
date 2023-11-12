@@ -20,9 +20,14 @@ public class MesProductBom extends BaseEntity
 
     private Long materialId;
 
+    private Long rid;
+
     /** 名称 */
     @Excel(name = "名称")
     private String name;
+
+    @Excel(name = "模型名称")
+    private String modelName;
 
     /** 产品id */
     @Excel(name = "产品id")
@@ -43,7 +48,15 @@ public class MesProductBom extends BaseEntity
 
     private String productUnit;
 
-    public void setId(Long id) 
+    public String getModelName() {
+        return modelName;
+    }
+
+    public void setModelName(String modelName) {
+        this.modelName = modelName;
+    }
+
+    public void setId(Long id)
     {
         this.id = id;
     }
@@ -126,6 +139,14 @@ public class MesProductBom extends BaseEntity
 
     public void setMaterialId(Long materialId) {
         this.materialId = materialId;
+    }
+
+    public Long getRid() {
+        return rid;
+    }
+
+    public void setRid(Long rid) {
+        this.rid = rid;
     }
 
     @Override

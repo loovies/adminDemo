@@ -31,15 +31,15 @@ public class MesProductBomDetail extends BaseEntity
     private Long usage;
 
 
-    private String productCode;
+    private String materialCode;
 
-    private String productName;
+    private String materialName;
 
-    private String productModel;
+    private String materialModel;
 
-    private String productSpecification;
+    private String materialSpecification;
 
-    private String productUnit;
+    private String materialUnit;
 
     public void setId(Long id) 
     {
@@ -78,44 +78,44 @@ public class MesProductBomDetail extends BaseEntity
         return usage;
     }
 
-    public String getProductCode() {
-        return productCode;
+    public String getMaterialCode() {
+        return materialCode;
     }
 
-    public void setProductCode(String productCode) {
-        this.productCode = productCode;
+    public void setMaterialCode(String materialCode) {
+        this.materialCode = materialCode;
     }
 
-    public String getProductName() {
-        return productName;
+    public String getMaterialName() {
+        return materialName;
     }
 
-    public void setProductName(String productName) {
-        this.productName = productName;
+    public void setMaterialName(String materialName) {
+        this.materialName = materialName;
     }
 
-    public String getProductModel() {
-        return productModel;
+    public String getMaterialModel() {
+        return materialModel;
     }
 
-    public void setProductModel(String productModel) {
-        this.productModel = productModel;
+    public void setMaterialModel(String materialModel) {
+        this.materialModel = materialModel;
     }
 
-    public String getProductSpecification() {
-        return productSpecification;
+    public String getMaterialSpecification() {
+        return materialSpecification;
     }
 
-    public void setProductSpecification(String productSpecification) {
-        this.productSpecification = productSpecification;
+    public void setMaterialSpecification(String materialSpecification) {
+        this.materialSpecification = materialSpecification;
     }
 
-    public String getProductUnit() {
-        return productUnit;
+    public String getMaterialUnit() {
+        return materialUnit;
     }
 
-    public void setProductUnit(String productUnit) {
-        this.productUnit = productUnit;
+    public void setMaterialUnit(String materialUnit) {
+        this.materialUnit = materialUnit;
     }
 
     @Override

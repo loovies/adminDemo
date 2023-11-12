@@ -1,4 +1,4 @@
-package com.ruoyi.web.controller.decarbonization;
+package com.ruoyi.web.controller.mes;
 
 import java.util.List;
 import javax.servlet.http.HttpServletResponse;
@@ -61,9 +61,8 @@ public class MesProductBomController extends BaseController
     /**
      * 获取产品BOM单详细信息
      */
-    @PreAuthorize("@ss.hasPermi('system:bom:query')")
-    @GetMapping(value = "/{id}")
-    public AjaxResult getInfo(@PathVariable("id") Long id)
+    @GetMapping("/{id}")
+    public AjaxResult getInfo(@PathVariable Long id)
     {
         return success(mesProductBomService.selectMesProductBomById(id));
     }
@@ -76,6 +75,10 @@ public class MesProductBomController extends BaseController
     @PostMapping
     public AjaxResult add(@RequestBody MesProductBom mesProductBom)
     {
+        System.out.println("+++++++++++");
+        System.out.println("+++++++++++");
+        System.out.println("+++++++++++");
+        System.out.println(mesProductBom);
         return toAjax(mesProductBomService.insertMesProductBom(mesProductBom));
     }
 

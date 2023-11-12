@@ -26,6 +26,8 @@
     </sql>
 
     <select id="selectVMesEquipmentPowerDetailList" parameterType="VMesEquipmentPowerDetail" resultMap="VMesEquipmentPowerDetailResult">
+        Select t.*
+        From(
         <include refid="selectVMesEquipmentPowerDetailVo"/>
         <where>
             <if test="equipmentId != null "> and equipment_id = #{equipmentId}</if>
@@ -44,5 +46,7 @@
             <if test="totalPowerConsume != null "> and total_power_consume = #{totalPowerConsume}</if>
             <if test="productLineName != null  and productLineName != ''"> and product_line_name like concat('%', #{productLineName}, '%')</if>
         </where>
+        group by equipment_id ) t
+        order by total_power_consume desc
     </select>
 </mapper>

@@ -2,6 +2,8 @@ package com.ruoyi.decarbonization.service.impl;
 
 import java.util.List;
 import com.ruoyi.common.utils.DateUtils;
+import com.ruoyi.decarbonization.domain.MesProductBomDetail;
+import com.ruoyi.decarbonization.mapper.MesProductBomDetailMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.ruoyi.decarbonization.mapper.MesProductBomMapper;
@@ -20,6 +22,8 @@ public class MesProductBomServiceImpl implements IMesProductBomService
     @Autowired
     private MesProductBomMapper mesProductBomMapper;
 
+    @Autowired
+    private MesProductBomDetailMapper mesProductBomDetailMapper;
     /**
      * 查询产品BOM单
      * 
@@ -54,7 +58,11 @@ public class MesProductBomServiceImpl implements IMesProductBomService
     public int insertMesProductBom(MesProductBom mesProductBom)
     {
         mesProductBom.setCreateTime(DateUtils.getNowDate());
-        return mesProductBomMapper.insertMesProductBom(mesProductBom);
+        mesProductBom.setProductId(mesProductBom.getProductId());
+        mesProductBom.setDescription(mesProductBom.getDescription());
+        mesProductBom.setName(mesProductBom.getName());
+        int i = mesProductBomMapper.insertMesProductBom(mesProductBom);
+        return i;
     }
 
     /**
